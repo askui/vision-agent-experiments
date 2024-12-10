@@ -1,0 +1,21 @@
+[project]
+name = "vision-agent-experiments"
+version = "0.1.0"
+description = "Default template for PDM package"
+authors = [
+    {name = "Adrian Stritzinger", email = "Adrian.Stritzinger@askui.com"},
+]
+dependencies = [
+    "askui @ file:///Users/adrianstritzinger/Projects/askui/vision-agent",
+    "pydantic-settings>=2.6.1",
+]
+requires-python = "==3.11.*"
+readme = "README.md"
+license = {text = "-"}
+
+[build-system]
+requires = ["setuptools>=61", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[tool.pdm.scripts]
+vae = {cmd = "python -m vision_agent_experiments"}
