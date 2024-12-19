@@ -1,31 +1,16 @@
-from pydantic import UUID4, BaseModel, Field
+from pydantic import UUID4
 from pydantic_settings import BaseSettings, SettingsConfigDict
+from dotenv import load_dotenv
 
-
-class AzureSettings(BaseModel):
-    openai_api_key: str
-    openai_api_version: str = Field("2023-03-15-preview")
-    openai_endpoint: str
-    openai_model: str = Field("gpt-4o")
-    openai_deployment: str = Field("gpt-4o")
-
-
-class ExecutionSettings(BaseModel):
-    agent_id: UUID4
-    agent_execution_id: UUID4
-
-
-class HubSettings(BaseModel):
-    workspace_id: str
-    access_token: str
-    host: str = Field("http://localhost:8000")
-
+load_dotenv(".env")
 
 class Settings(BaseSettings):
-    model_config = SettingsConfigDict(env_file=".env", env_nested_delimiter="__")
-    azure: AzureSettings = Field(default_factory=AzureSettings)  # type: ignore
-    execution: ExecutionSettings = Field(default_factory=ExecutionSettings)  # type: ignore
-    hub: HubSettings = Field(default_factory=HubSettings)  # type: ignore
+    model_config = SettingsConfigDict(env_file=".env", extra="allow")
+    askui_agent_id: UUID4
+    askui_agent_execution_id: UUID4
+    askui_workspace_id: UUID4
+    askui_token: str
+    askui_workspaces_endpoint: str
 
 
-settings = Settings()
+settings = Settings() # type: ignore

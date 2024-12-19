@@ -6,8 +6,8 @@ authors = [
     {name = "Adrian Stritzinger", email = "Adrian.Stritzinger@askui.com"},
 ]
 dependencies = [
-    "askui @ file:///Users/adrianstritzinger/Projects/askui/vision-agent",
     "pydantic-settings>=2.6.1",
+    "askui @ git+ssh://git@github.com/askui/vision-agent.git@poc/data-processing",
 ]
 requires-python = "==3.11.*"
 readme = "README.md"
