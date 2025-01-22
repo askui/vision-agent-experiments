@@ -18,4 +18,4 @@ requires = ["setuptools>=61", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [tool.pdm.scripts]
-vae = {cmd = "python -m vision_agent_experiments"}
+vae = {cmd = "python -m vision_agent_experiments.data_processing"}
